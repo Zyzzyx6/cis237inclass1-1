@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace cis237inclass1
 {
     class Program
@@ -11,7 +12,7 @@ namespace cis237inclass1
         static void Main(string[] args)
         {
             //Let's make a new UI class that we can use below
-            UserInterface ui = new UserInterface();
+            //UserInterface ui = new UserInterface();
 
             //Here is a new Employee being created just to make sure
             //that our Employee class works
@@ -25,15 +26,26 @@ namespace cis237inclass1
             //The array is going to be in the Heap.
             Employee[] employees = new Employee[10];
 
-            employees[0] = new Employee("James", "Kirk", 1701.00m);
-            employees[1] = new Employee("Jean-Luc", "Picard", 1701.00m);
-            employees[2] = new Employee("Benjamin", "Sisko", 587.00m);
-            employees[3] = new Employee("Kathryn", "Janeway", 287.00m);
-            employees[4] = new Employee("Johnathan", "Archer", 127.00m);
+            // employees[0] = new Employee("James", "Kirk", 1701.00m);
+            // employees[1] = new Employee("Jean-Luc", "Picard", 1701.00m);
+            // employees[2] = new Employee("Benjamin", "Sisko", 587.00m);
+            // employees[3] = new Employee("Kathryn", "Janeway", 287.00m);
+            //employees[4] = new Employee("Johnathan", "Archer", 127.00m);
 
+
+            //Make the string for the path to the CSV file
+            string pathToCsv = "employees.csv";
+
+            //Instantiate the CsvProcessor
+            CsvProcessor csvProcessor = new CsvProcessor();
+
+            //Cal the importCsv method sending over the path and
+            //the array to store the read in records
+
+            csvProcessor.ImportCsv(pathToCsv, employees);
 
             //Get some input from the user
-            int choice = ui.GetUserInput();
+            int choice = StaticUserInterface.GetUserInput();
 
             //While the user has chosen something other than 2
             //(Which for us is only 1)
@@ -54,10 +66,10 @@ namespace cis237inclass1
                     }
                 }
                 //Output the outputString to the console
-                ui.Output(outputString);
+                StaticUserInterface.Output(outputString);
 
                 //RE-prompt the user for some new input
-                choice = ui.GetUserInput();
+                choice = StaticUserInterface.GetUserInput();
             }
 
         }
